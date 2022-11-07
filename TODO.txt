@@ -1,0 +1,24 @@
+1. generate formid
+2. store structure in backend
+3. add that formid to userid db
+
+user{
+	userid : 
+	forms : [
+		formid : 
+	]
+}
+
+form{
+	formid:{
+		formname : ""
+	}
+}
+
+
+answer{
+	formid : {
+		userid: {}
+	}
+}
+
