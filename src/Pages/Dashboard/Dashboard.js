@@ -8,6 +8,7 @@ import { query, collection, getDocs, where } from "firebase/firestore";
 function Dashboard() {
   const [user, loading, error] = useAuthState(auth);
   const [name, setName] = useState("");
+  const [userFormList, setUserFormList] = useState([]);
   const navigate = useNavigate();
 
   const fetchUserName = async () => {
@@ -36,6 +37,10 @@ function Dashboard() {
         Logged in as
         <div>{name}</div>
         <div>{user?.email}</div>
+        <div>
+          <h4>{`${name}'s forms : `}</h4>
+          {userFormList}
+        </div>
         <button className="dashboard__btn" onClick={logout}>
           Logout
         </button>
