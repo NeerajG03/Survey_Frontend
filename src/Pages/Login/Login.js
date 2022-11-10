@@ -1,26 +1,33 @@
 import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import {
-  auth,
-  logInWithEmailAndPassword,
-  signInWithGoogle,
-} from "../../firebase";
-import { useAuthState } from "react-firebase-hooks/auth";
+import { Axios } from "../../Axios";
 import "./Login.css";
+import {authContext} from '../../Context/AuthContext'
 
 function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [user, loading, error] = useAuthState(auth);
   const navigate = useNavigate();
 
+  const { authUser, setAuthUser, getAuthUser } = React.useContext(authContext);
+
+
   useEffect(() => {
-    if (loading) {
-      // maybe trigger a loading screen
-      return;
+    setAuthUser(null);
+  }, []);
+
+  const handleLogin = ()=>{
+    const userData = {
+      email,
+      password
     }
-    if (user) navigate("/dashboard");
-  }, [user, loading]);
+    Axios.post('login', userData).then(res=>{
+      setAuthUser(res.data);
+      if (res.data){
+        navigate('/dashboard')
+      }
+    }).catch(err=>{console.log(err)})
+  }
 
   return (
     <div className="login">
@@ -41,16 +48,10 @@ function Login() {
         />
         <button
           className="login__btn"
-          onClick={() => logInWithEmailAndPassword(email, password)}
+          onClick={handleLogin}
         >
           Login
         </button>
-        <button className="login__btn login__google" onClick={signInWithGoogle}>
-          Login with Google
-        </button>
-        <div>
-          <Link to="/reset">Forgot Password</Link>
-        </div>
         <div>
           Don't have an account? <Link to="/register">Register</Link> now.
         </div>

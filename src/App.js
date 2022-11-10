@@ -5,10 +5,12 @@ import Register from "./Pages/Register/Register";
 import Reset from "./Pages/Reset/Reset";
 import Dashboard from "./Pages/Dashboard/Dashboard";
 import FormBuilder from "./Pages/FormBuilder/FormBuilder";
+import AuthContext from './Context/AuthContext'
 
 function App() {
   return (
     <div className="app">
+      <AuthContext>
       <Router>
         <Routes>
           <Route exact path="/" element={<Login />} />
@@ -18,6 +20,7 @@ function App() {
           <Route exact path="/formbuilder" element={<FormBuilder />} />
         </Routes>
       </Router>
+      </AuthContext>
     </div>
   );
 }
