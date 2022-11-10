@@ -1,29 +1,105 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./Dashboard.css";
-import {authContext} from '../../Context/AuthContext'
-
+import { authContext } from "../../Context/AuthContext";
+import Box from "@mui/material/Box";
+import Button from "@mui/material/Button";
+import Typography from "@mui/material/Typography";
+import Modal from "@mui/material/Modal";
 
 function Dashboard() {
   const navigate = useNavigate();
 
   const { authUser, setAuthUser, getAuthUser } = React.useContext(authContext);
+  const [open, setOpen] = useState(false);
+  const [ansCode, setAnsCode] = useState("");
 
+  const handleAnswerFormModal = () => {
+    setOpen(true);
+  };
+  const handleAnswerFormClose = () => {
+    setOpen(false);
+  };
+
+  const handleLogout = () => {
+    setAuthUser(null);
+    navigate("/login");
+  };
+
+  const handleCreateForm = () => {
+    navigate("/formbuilder");
+  };
+
+  const handleAnswerForm = () => {
+    navigate("/createform", { formid: ansCode });
+  };
+
+  const style = {
+    position: "absolute",
+    top: "50%",
+    left: "50%",
+    transform: "translate(-50%, -50%)",
+    width: 400,
+    bgcolor: "background.paper",
+    border: "2px solid #000",
+    boxShadow: 24,
+    p: 4,
+  };
 
   return (
     <div className="dashboard">
-      {/* <div className="dashboard__container">
+      <div className="dashboard__container">
         Logged in as
-        <div>{name}</div>
-        <div>{user?.email}</div>
+        <div>{authUser.name}</div>
+        <div>{authUser.email}</div>
         <div>
-          <h4>{`${name}'s forms : `}</h4>
-          {userFormList}
+          <h4>{`${authUser.name}'s forms : `}</h4>
+          {authUser.forms.map((form) => {
+            // form = JSON.parse(form);
+            console.log(authUser);
+            return (
+              <div>
+                <li>
+                  {form.formname + "  " + form.formid}
+                  <button onClick={() => alert("bruh im adding this later")}>
+                    See Results{" "}
+                  </button>{" "}
+                </li>
+              </div>
+            );
+          })}
         </div>
-        <button className="dashboard__btn" onClick={logout}>
+        <div>
+          <button className="dashboard__btn" onClick={handleCreateForm}>
+            Create a form
+          </button>
+          <br />
+          <button className="dashboard__btn" onClick={handleAnswerFormModal}>
+            Answer a form
+          </button>
+        </div>
+        <button className="dashboard__btn" onClick={handleLogout}>
           Logout
         </button>
-      </div> */}
+      </div>
+
+      <Modal
+        open={open}
+        onClose={handleAnswerFormClose}
+        aria-labelledby="modal-modal-title"
+        aria-describedby="modal-modal-description"
+      >
+        <Box sx={style}>
+          <Typography id="modal-modal-title" variant="h6" component="h2">
+            Enter Answer Code
+          </Typography>
+          <input onChange={(e) => setAnsCode(e.target.value)}></input>
+          <br />
+          <button className="dashboard__btn" onClick={handleAnswerForm}>
+            Answer!
+          </button>
+        </Box>
+      </Modal>
     </div>
   );
 }
