@@ -12,14 +12,31 @@ import Modal from "@mui/material/Modal";
 export default function FormBuilder() {
   const [form, setForm] = useState(null);
   const [formName, setFormName] = useState(null);
+  const [formID, setFormID] = useState("");
   const [open, setOpen] = useState(false);
   const navigate = useNavigate();
   const { authUser, setAuthUser, getAuthUser } = React.useContext(authContext);
-  let formID = "";
 
   const handleCodeClose = () => {
     setOpen(false);
   };
+
+  const items = [
+    { key: "Header" },
+    { key: "Label" },
+    { key: "Paragraph" },
+    { key: "TextInput" },
+    { key: "RadioButtons" },
+    { key: "Checkboxes" },
+    { key: "Label" },
+    { key: "LineBreak" },
+    { key: "EmailInput" },
+    { key: "PhoneNumber" },
+    { key: "Dropdown" },
+    { key: "DatePicker" },
+    { key: "Rating" },
+    { key: "HyperLink" },
+  ];
 
   const sendReq = () => {
     if (form) {
@@ -32,7 +49,13 @@ export default function FormBuilder() {
       Axios.post("createform", dataToSend)
         .then((res) => {
           if (res.status == 200) {
-            navigate("/dashboard");
+            Axios.get(`/getformlist/${authUser?.uid}`).then((res) => {
+              setAuthUser({
+                ...authUser,
+                forms: res.data.forms,
+              });
+              navigate("/dashboard");
+            });
           }
         })
         .catch((err) => {
@@ -42,7 +65,7 @@ export default function FormBuilder() {
   };
 
   const handleCreateForm = () => {
-    formID = uuidv4().toString();
+    setFormID(uuidv4().toString());
     setOpen(true);
   };
 
@@ -61,12 +84,13 @@ export default function FormBuilder() {
   return (
     <div>
       <input type="text" onChange={(e) => setFormName(e.target.value)} />
+      <button onClick={handleCreateForm}>Create form</button>
       <ReactFormBuilder
         onPost={(e) => {
           setForm(e.task_data);
         }}
+        toolbarItems={items}
       />
-      <button onClick={handleCreateForm}>Create form</button>
 
       <Modal
         open={open}
