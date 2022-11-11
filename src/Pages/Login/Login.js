@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { Axios } from "../../Axios";
 import "./Login.css";
-import {authContext} from '../../Context/AuthContext'
+import { authContext } from "../../Context/AuthContext";
 
 function Login() {
   const [email, setEmail] = useState("");
@@ -11,23 +11,26 @@ function Login() {
 
   const { authUser, setAuthUser, getAuthUser } = React.useContext(authContext);
 
-
   useEffect(() => {
-    setAuthUser(null);
+    // setAuthUser(null);
   }, []);
 
-  const handleLogin = ()=>{
+  const handleLogin = () => {
     const userData = {
       email,
-      password
-    }
-    Axios.post('login', userData).then(res=>{
-      setAuthUser(res.data);
-      if (res.data){
-        navigate('/dashboard')
-      }
-    }).catch(err=>{console.log(err)})
-  }
+      password,
+    };
+    Axios.post("login", userData)
+      .then((res) => {
+        setAuthUser(res.data);
+        if (res.data) {
+          navigate("/dashboard");
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
 
   return (
     <div className="login">
@@ -46,10 +49,7 @@ function Login() {
           onChange={(e) => setPassword(e.target.value)}
           placeholder="Password"
         />
-        <button
-          className="login__btn"
-          onClick={handleLogin}
-        >
+        <button className="login__btn" onClick={handleLogin}>
           Login
         </button>
         <div>

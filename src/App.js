@@ -19,7 +19,7 @@ function App() {
             <Route exact path="/reset" element={<Reset />} />
             <Route exact path="/dashboard" element={<Dashboard />} />
             <Route exact path="/formbuilder" element={<FormBuilder />} />
-            <Route exact path="/formbuilder" element={<FormGenerator />} />
+            <Route exact path="/answerform" element={<FormGenerator />} />
           </Routes>
         </Router>
       </AuthContext>
