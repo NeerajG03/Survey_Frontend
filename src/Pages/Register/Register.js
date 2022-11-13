@@ -35,6 +35,8 @@ function Register() {
 
   return (
     <div className="register">
+      <div className="reg_header">Sign Up!</div>
+      <div className="reg_content">
       <div className="register__container">
         <input
           type="text"
@@ -64,6 +66,7 @@ function Register() {
         <div>
           Already have an account? <Link to="/">Login</Link> now.
         </div>
+      </div>
       </div>
     </div>
   );

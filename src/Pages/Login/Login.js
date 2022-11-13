@@ -34,6 +34,11 @@ function Login() {
 
   return (
     <div className="login">
+      <div className="login_header">
+        Login
+        {/* <img src="login.png" className="Logo"></img> */}
+      </div>
+      <div className="login_content">
       <div className="login__container">
         <input
           type="text"
@@ -55,6 +60,7 @@ function Login() {
         <div>
           Don't have an account? <Link to="/register">Register</Link> now.
         </div>
+      </div>
       </div>
     </div>
   );

@@ -8,6 +8,7 @@ import { useNavigate } from "react-router-dom";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import Modal from "@mui/material/Modal";
+import "./FormBuilder.css"
 
 export default function FormBuilder() {
   const [form, setForm] = useState(null);
@@ -83,8 +84,15 @@ export default function FormBuilder() {
 
   return (
     <div>
-      <input type="text" onChange={(e) => setFormName(e.target.value)} />
-      <button onClick={handleCreateForm}>Create form</button>
+      <div className="formnamebox">
+        <div className="frmnm">
+          <p className="textfrmnm">Form Name:</p>
+          <input className="formtb" type="text" onChange={(e) => setFormName(e.target.value)} />
+        </div>
+        <div className="createbtn">
+          <button className="button-56"onClick={handleCreateForm}>Create form</button>
+        </div>
+      </div>
       <ReactFormBuilder
         onPost={(e) => {
           setForm(e.task_data);

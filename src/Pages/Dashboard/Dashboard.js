@@ -27,7 +27,7 @@ function Dashboard() {
 
   const handleLogout = () => {
     setAuthUser(null);
-    navigate("/login");
+    navigate("/");
   };
 
   const handleCreateForm = () => {
@@ -55,17 +55,20 @@ function Dashboard() {
       {authUser && (
         <div>
           <div className="dashboard__container">
-            Logged in as
-            <div>{authUser.name}</div>
-            <div>{authUser.email}</div>
+            
             <div>
-              <h4>{`${authUser.name}'s forms : `}</h4>
+              <div className="header">{`${authUser.name}'s forms:`}</div>
+              <div className="loggedas">
+                Logged in as <b>{authUser.name}</b>
+              </div>
+              <div className="forms">
               {authUser.forms.map((form) => {
                 return (
                   <div key={form.formid}>
                     <li>
                       {form.formname + "  " + form.formid}
                       <button
+                        className="button-55"
                         onClick={() => alert("bruh im adding this later")}
                       >
                         See Results{" "}
@@ -74,20 +77,21 @@ function Dashboard() {
                   </div>
                 );
               })}
+            </div>  
             </div>
-            <div>
-              <button className="dashboard__btn" onClick={handleCreateForm}>
+            <div className="buttonset1">
+              <button className="button-74" onClick={handleCreateForm}>
                 Create a form
               </button>
               <br />
               <button
-                className="dashboard__btn"
+                className="button-74"
                 onClick={handleAnswerFormModal}
               >
                 Answer a form
               </button>
             </div>
-            <button className="dashboard__btn" onClick={handleLogout}>
+            <button className="button-56" onClick={handleLogout}>
               Logout
             </button>
           </div>
