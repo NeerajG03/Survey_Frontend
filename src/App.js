@@ -7,6 +7,7 @@ import Dashboard from "./Pages/Dashboard/Dashboard";
 import FormBuilder from "./Pages/FormBuilder/FormBuilder";
 import AuthContext from "./Context/AuthContext";
 import FormGenerator from "./Pages/FormGenerator/FormGenerator";
+import Results from "./Pages/Results/Results";
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
             <Route exact path="/dashboard" element={<Dashboard />} />
             <Route exact path="/formbuilder" element={<FormBuilder />} />
             <Route exact path="/answerform" element={<FormGenerator />} />
+            <Route exact path="/results" element={<Results />} />
           </Routes>
         </Router>
       </AuthContext>

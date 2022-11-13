@@ -55,39 +55,39 @@ function Dashboard() {
       {authUser && (
         <div>
           <div className="dashboard__container">
-            
             <div>
               <div className="header">{`${authUser.name}'s forms:`}</div>
               <div className="loggedas">
                 Logged in as <b>{authUser.name}</b>
               </div>
               <div className="forms">
-              {authUser.forms.map((form) => {
-                return (
-                  <div key={form.formid}>
-                    <li>
-                      {form.formname + "  " + form.formid}
-                      <button
-                        className="button-55"
-                        onClick={() => alert("bruh im adding this later")}
-                      >
-                        See Results{" "}
-                      </button>{" "}
-                    </li>
-                  </div>
-                );
-              })}
-            </div>  
+                {authUser.forms.map((form) => {
+                  return (
+                    <div key={form.formid}>
+                      <li>
+                        {form.formname + "  " + form.formid}
+                        <button
+                          className="button-55"
+                          onClick={() => {
+                            navigate("/results", {
+                              state: { formid: form.formid },
+                            });
+                          }}
+                        >
+                          See Results{" "}
+                        </button>{" "}
+                      </li>
+                    </div>
+                  );
+                })}
+              </div>
             </div>
             <div className="buttonset1">
               <button className="button-74" onClick={handleCreateForm}>
                 Create a form
               </button>
               <br />
-              <button
-                className="button-74"
-                onClick={handleAnswerFormModal}
-              >
+              <button className="button-74" onClick={handleAnswerFormModal}>
                 Answer a form
               </button>
             </div>
