@@ -5,6 +5,7 @@ import Typography from "@mui/material/Typography";
 import Modal from "@mui/material/Modal";
 import { Axios } from "../../Axios";
 import { ReactFormGenerator } from "react-form-builder2";
+import "./Results.css";
 
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
@@ -49,9 +50,9 @@ export default function Results() {
       <TableContainer component={Paper}>
         <Table sx={{ minWidth: 650 }} aria-label="simple table">
           <TableHead>
-            <TableRow>
-              <TableCell>UID of Surveyee </TableCell>
-              <TableCell align="right">Action</TableCell>
+            <TableRow className="header">
+              <TableCell className="pval">UID of Surveyee </TableCell>
+              <TableCell className="pval2" align="right">Action</TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
@@ -61,11 +62,12 @@ export default function Results() {
                   key={formAns.ansuid}
                   sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
                 >
-                  <TableCell component="th" scope="row">
+                  <TableCell className="uid" component="th" scope="row">
                     {formAns.ansuid}
                   </TableCell>
-                  <TableCell align="right">
+                  <TableCell className="action" align="right">
                     <button
+                    className="button-56"
                       onClick={() => {
                         setAnsModalOpen(true);
                         setAnsDataToShow(JSON.parse(formAns.data));
