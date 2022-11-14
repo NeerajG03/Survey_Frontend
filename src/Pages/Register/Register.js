@@ -3,6 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import {Axios} from '../../Axios'
 import './Register.css'
 import {authContext} from '../../Context/AuthContext'
+import logo from "../Icons/logo.png";
 
 
 
@@ -35,6 +36,8 @@ function Register() {
 
   return (
     <div className="register">
+      <div className="logo"><img src={logo}></img></div>
+      <div className="content">
       <div className="reg_header">Sign Up!</div>
       <div className="reg_content">
       <div className="register__container">
@@ -66,6 +69,7 @@ function Register() {
         <div>
           Already have an account? <Link to="/">Login</Link> now.
         </div>
+      </div>
       </div>
       </div>
     </div>

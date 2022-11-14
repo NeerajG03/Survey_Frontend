@@ -6,6 +6,7 @@ import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import Modal from "@mui/material/Modal";
 import { Axios } from "../../Axios";
+import logo from "../Icons/logo.png";
 
 function Dashboard() {
   const navigate = useNavigate();
@@ -57,9 +58,10 @@ function Dashboard() {
           <div className="dashboard__container">
             <div>
               <div className="header">{`${authUser.name}'s forms:`}</div>
-              <div className="loggedas">
-                Logged in as <b>{authUser.name}</b>
-              </div>
+              {/* <div className="loggedas"> */}
+                {/* Logged in as <b>{authUser.name}</b> */}
+
+              {/* </div> */}
               <div className="forms">
                 {authUser.forms.map((form) => {
                   return (
@@ -94,6 +96,7 @@ function Dashboard() {
             <button className="button-56" onClick={handleLogout}>
               Logout
             </button>
+          <div className="logo" ><img src={logo} height="50px" width="250px"></img></div>
           </div>
 
           <Modal

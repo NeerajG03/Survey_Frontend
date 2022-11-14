@@ -5,7 +5,9 @@
   align-items: center;
   justify-content: center;
 }
-
+.buttonset1 {
+  justify-content: space-between;
+}
 .header {
   border: #dcdcdc;
   background-color: rgb(254, 207, 174);
@@ -17,7 +19,12 @@
   border-bottom: 2px solid black;
   text-transform: uppercase;
 }
-
+.logo {
+  align-self: center;
+  align-items: center;
+  opacity: .5;
+  padding: 5px;
+}
 .button-55 {
   margin-left: 50px;
   /* margin: 5px; */

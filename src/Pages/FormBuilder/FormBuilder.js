@@ -9,6 +9,7 @@ import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import Modal from "@mui/material/Modal";
 import "./FormBuilder.css"
+import logo from'../Icons/logo.png';
 
 export default function FormBuilder() {
   const [form, setForm] = useState(null);

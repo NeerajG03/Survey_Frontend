@@ -5,6 +5,14 @@
   align-items: center;
   justify-content: center;
 }
+.logo {
+  padding: 4%;
+}
+
+.content {
+  background-color: #ffe1b5;
+  padding: 8vh;
+}
 
 .reg_header {
   display: flex;

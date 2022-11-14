@@ -3,6 +3,8 @@ import { Link, useNavigate } from "react-router-dom";
 import { Axios } from "../../Axios";
 import "./Login.css";
 import { authContext } from "../../Context/AuthContext";
+import logo from'../Icons/logo.png';
+
 
 function Login() {
   const [email, setEmail] = useState("");
@@ -34,31 +36,33 @@ function Login() {
 
   return (
     <div className="login">
-      <div className="login_header">
-        Login
-        {/* <img src="login.png" className="Logo"></img> */}
-      </div>
-      <div className="login_content">
-      <div className="login__container">
-        <input
-          type="text"
-          className="login__textBox"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          placeholder="E-mail Address"
-        />
-        <input
-          type="password"
-          className="login__textBox"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          placeholder="Password"
-        />
-        <button className="login__btn" onClick={handleLogin}>
+      <div className="logo"><img src={logo}></img></div>
+      <div className="content">
+        <div className="login_header">
           Login
-        </button>
-        <div>
-          Don't have an account? <Link to="/register">Register</Link> now.
+        </div>
+        <div className="login_content">
+        <div className="login__container">
+          <input
+            type="text"
+            className="login__textBox"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            placeholder="E-mail Address"
+          />
+          <input
+            type="password"
+            className="login__textBox"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            placeholder="Password"
+          />
+          <button className="login__btn" onClick={handleLogin}>
+            Login
+          </button>
+          <div>
+            Don't have an account? <Link to="/register">Register</Link> now.
+          </div>
         </div>
       </div>
       </div>
