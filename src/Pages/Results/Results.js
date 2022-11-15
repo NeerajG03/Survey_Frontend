@@ -33,6 +33,8 @@ export default function Results() {
     border: "2px solid #000",
     boxShadow: 24,
     p: 4,
+    height: '90%',
+    overflow: 'auto'
   };
 
   useEffect(() => {
@@ -108,6 +110,7 @@ export default function Results() {
         aria-describedby="modal-modal-description"
       >
         <Box sx={style}>
+          <div className="answerModal">
           {ansDataToShow && formToShow && (
             <ReactFormGenerator
               data={formToShow.formdata}
@@ -125,6 +128,7 @@ export default function Results() {
               }
             />
           )}
+          </div>
         </Box>
       </Modal>
     </div>

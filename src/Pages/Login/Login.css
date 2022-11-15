@@ -12,10 +12,15 @@
 .content {
   background-color: #ffe1b5;
   padding: 8vh;
+  border-radius: 25px;
+    border-style: double;
+    border-width: 8px;
 }
 
 .logo {
   display: flex;
+  padding: auto;
+    margin-right: 70px;
   /* height: 20%;
   width: 20%; */
 }

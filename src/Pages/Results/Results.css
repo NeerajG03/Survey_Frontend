@@ -82,3 +82,7 @@
         padding: 0 40px;
     }
 }
+.answerModal {
+    /* overflow-y: scroll; */
+    /* border: 2px solid red; */
+}

@@ -58,10 +58,6 @@ function Dashboard() {
           <div className="dashboard__container">
             <div>
               <div className="header">{`${authUser.name}'s forms:`}</div>
-              {/* <div className="loggedas"> */}
-                {/* Logged in as <b>{authUser.name}</b> */}
-
-              {/* </div> */}
               <div className="forms">
                 {authUser.forms.map((form) => {
                   return (
@@ -93,10 +89,11 @@ function Dashboard() {
                 Answer a form
               </button>
             </div>
-            <button className="button-56" onClick={handleLogout}>
+            
+          <div className="logo" ><img src={logo} height="50px" width="250px"></img></div>
+          <button className="login__btn" onClick={handleLogout}>
               Logout
             </button>
-          <div className="logo" ><img src={logo} height="50px" width="250px"></img></div>
           </div>
 
           <Modal
